@@ -33,3 +33,22 @@ pub fn run(config: Config) -> Result<(), Box<Error>> {
     Ok(())
 }
 
+#[cfg(test)]
+mod test {
+    use supper::*;
+
+    #[test]
+    fn one_result() {
+        let query = "duct";
+        let contents = "\
+Rust:
+safe, fast, produtive.
+Pick three.";
+
+        assert_eq!(
+            vec!["safe, fast, productive."],
+            search(query, contents)
+        );
+    }
+}
+
